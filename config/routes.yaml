@@ -4,4 +4,16 @@ league_teams:
     methods: [GET]
     requirements:
         id: '\d+'
+team_create:
+    path: /league/{id}/team
+    controller: App\Controller\LeagueController::teamCreate
+    methods: [POST]
+    requirements:
+        id: '\d+'
 
+team_edit:
+    path: /team/{id}
+    controller: App\Controller\LeagueController::teamEdit
+    methods: [PATCH]
+    requirements:
+        id: '\d+'

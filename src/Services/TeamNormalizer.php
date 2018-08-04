@@ -17,7 +17,7 @@ class TeamNormalizer extends BasicNormalizer implements NormalizerInterface
 
             'id' => $object->getId(),
             'name' => $object->getName(),
-            'stripx' => $object->getStrip()
+            'strip' => $object->getStrip()
         ];
 
     }

@@ -31,7 +31,7 @@ class LeagueController extends AbstractController
         try {
             $teams = $league->getTeams();
         } catch (Exception $exception) {
-            //Process exception in a nice way
+            return new JsonResponse(['error'=>$exception->getMessage()], 400);
         }
 
         foreach ($teams as $team){
@@ -42,7 +42,7 @@ class LeagueController extends AbstractController
 
     public function teamCreate(League $league, Request $request, TeamService $teamService)
     {
-        $data = $request->request->all();
+        $data = json_decode($request->getContent(), true);
         try {
             $teamService->teamCreate($data, $league);
         } catch (Exception $exception) {
@@ -50,6 +50,26 @@ class LeagueController extends AbstractController
         }
         return new JsonResponse(['ok'], 201);
 
+    }
+
+    /**
+     * @param Team $team
+     * @param Request $request
+     * @param TeamService $teamService
+     * @param TeamNormalizer $teamNormalizer
+     * @return JsonResponse
+     */
+    public function teamEdit(Team $team, Request $request, TeamService $teamService, TeamNormalizer $teamNormalizer)
+    {
+        $data = json_decode($request->getContent(), true);
+
+        try {
+            $editedTeam = $teamService->teamEdit($team, $data);
+        } catch (Exception $exception) {
+            return new JsonResponse(['error'=>$exception->getMessage()], 400);
+
+        }
+        return new JsonResponse($teamNormalizer->normalize($editedTeam), 200);
     }
 
 }
