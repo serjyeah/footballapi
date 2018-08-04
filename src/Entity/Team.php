@@ -27,8 +27,8 @@ class Team
     private $strip;
 
     /**
-     * @ORM\Column(type="integer", name="league_id")
-     * @ORM\ManyToOne(targetEntity="League", inversedBy="teams")
+     *
+     * @ORM\ManyToOne(targetEntity="App\Entity\League", inversedBy="teams")
      * @ORM\JoinColumn(name="league_id", referencedColumnName="id")
      */
     private $league;
@@ -73,7 +73,7 @@ class Team
     /**
      * @param mixed $league
      */
-    public function setLeague(League $league): void
+    public function setLeague($league): void
     {
         $this->league = $league;
     }

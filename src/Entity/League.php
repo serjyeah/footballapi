@@ -23,7 +23,8 @@ class League
     private $name;
 
     /**
-     * @ORM\OneToMany(targetEntity="Team", mappedBy="league")
+     * @ORM\OneToMany(targetEntity="App\Entity\Team", mappedBy="league")
+     * @ORM\JoinColumn(referencedColumnName="id")
      */
     private $teams;
 
