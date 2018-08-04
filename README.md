@@ -3,8 +3,8 @@
 
 ### Installation
 ```sh
-$ git clone git clone https://serjshaklein@bitbucket.org/serjshaklein/houston.git
-$ cd houston
+$ git clone git clone git@github.com:serjyeah/footballapi.git
+$ cd footballapi
 $ composer install
 ```
 Edit .env file to change parameter of the DB connection. Then run:
