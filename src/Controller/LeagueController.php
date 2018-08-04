@@ -10,7 +10,9 @@ namespace App\Controller;
 
 
 use App\Entity\League;
+use App\Entity\Team;
 use App\Services\TeamNormalizer;
+use App\Services\TeamService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Config\Definition\Exception\Exception;
 use Symfony\Component\HttpFoundation\JsonResponse;
@@ -36,6 +38,18 @@ class LeagueController extends AbstractController
             $toNormalize[] = $team;
         }
         return new JsonResponse($teamNormalizer->bulkNormalize($toNormalize), 200);
+    }
+
+    public function teamCreate(League $league, Request $request, TeamService $teamService)
+    {
+        $data = $request->request->all();
+        try {
+            $teamService->teamCreate($data, $league);
+        } catch (Exception $exception) {
+
+        }
+        return new JsonResponse(['ok'], 201);
+
     }
 
 }
