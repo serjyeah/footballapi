@@ -66,4 +66,10 @@ class TeamService
         return $team;
     }
 
+    public function leagueDelete(League $league)
+    {
+        $this->entityManager->remove($league);
+        $this->entityManager->flush();
+    }
+
 }

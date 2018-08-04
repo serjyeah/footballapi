@@ -23,7 +23,7 @@ class League
     private $name;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Team", mappedBy="league")
+     * @ORM\OneToMany(targetEntity="App\Entity\Team", mappedBy="league", cascade={"remove"})
      * @ORM\JoinColumn(referencedColumnName="id")
      */
     private $teams;

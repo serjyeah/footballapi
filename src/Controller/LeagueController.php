@@ -72,4 +72,11 @@ class LeagueController extends AbstractController
         return new JsonResponse($teamNormalizer->normalize($editedTeam), 200);
     }
 
+
+    public function leagueDelete(League $league, TeamService $teamService)
+    {
+        $teamService->leagueDelete($league);
+        return new JsonResponse(['ok'], 204);
+    }
+
 }
