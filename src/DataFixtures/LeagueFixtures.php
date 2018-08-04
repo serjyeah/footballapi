@@ -16,7 +16,7 @@ class LeagueFixtures extends Fixture
         $manager->persist($league);
         $manager->flush();
         $this->addReference('league_premier', $league);
-        
+
         $league = new League();
         $league->setName('League One');
         $this->setReference('league_one', $league);

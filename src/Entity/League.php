@@ -52,7 +52,7 @@ class League
     /**
      * @return mixed
      */
-    public function getTeams(): ArrayCollection
+    public function getTeams()
     {
         return $this->teams;
     }

@@ -1,3 +1,7 @@
-#index:
-#    path: /
-#    controller: App\Controller\DefaultController::index
+league_teams:
+    path: /league/{id}/teams
+    controller: App\Controller\LeagueController::leagueTeams
+    methods: [GET]
+    requirements:
+        id: '\d+'
+
